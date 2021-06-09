@@ -28,12 +28,14 @@ export default (props) => {
 
     const keyPressed = (_p5, e) => {
 	if (e.key == "ArrowUp" || e.key == "w") {
-	    console.log("up")
 	    w += 0.01
 	}
-	if (e.key == "ArrowDown" | e.key == "s") {
-	    console.log("jjd")
+	if (e.key == "ArrowDown" || e.key == "s") {
 	    w -= 0.01
+	}
+
+	if (e.key == "r") {
+	    w = 0.04
 	}
     }
 
