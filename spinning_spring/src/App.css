@@ -1,0 +1,33 @@
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #231c14;
+    flex-direction: column;
+    /*border: 1px solid teal;*/
+    /*align-content: center;*/
+    /*vertical-align: middle;*/
+}
+
+.help {
+    /*opacity: 0;*/
+    color: #cec9bd;
+    font-weight: 750;
+    font-size: 14px;
+    font-family: monospace;
+    text-align: center;
+
+}
+
+.kbd {
+    background: #6C6146;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 2px;
+    border-radius: 2px;
+}
+
+.nl {
+    margin-top: 100px;
+}
