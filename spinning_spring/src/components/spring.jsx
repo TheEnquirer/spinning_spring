@@ -15,7 +15,9 @@ let theta = 0;
 //let w = 0.04;
 let w = 1.0
 
-let size = 1000;
+//let height = 600;
+let height = 600;
+let width = 1000;
 
 
 let path = []
@@ -35,7 +37,7 @@ let sinm = true
 
 export default (props) => {
     const setup = (p5, canvasParentRef) => {
-	cnv = p5.createCanvas(size, size).parent(canvasParentRef)
+	cnv = p5.createCanvas(width, height).parent(canvasParentRef)
 	//console.log(cnv)
 	//cnv.keyPressed((event) => {
 	//    console.log("Clicked on the canvas. Event:", event)
@@ -106,7 +108,7 @@ export default (props) => {
     const draw = (p5) => {
 	//p5.clear()
 	p5.ellipseMode(p5.CENTER);
-	p5.translate(size / 2, size / 2);
+	p5.translate(width / 2, height / 2);
 	p5.background("#231c14");
 	p5.fill("#CEC9BD");
 	p5.noStroke();
@@ -144,7 +146,7 @@ export default (props) => {
     return (
 	<div className="wrapper">
 	    <Sketch setup={setup} draw={draw} keyPressed={keyPressed}/>
-	    <div style={{maxWidth: 500, minWidth: 500}}>
+	    <div style={{maxWidth: 500, minWidth: 500, zIndex: 50, paddingTop: "3rem"}}>
 		<Slider min={-100} max={300}
 		    className={"slider"}
 		    railStyle={{
