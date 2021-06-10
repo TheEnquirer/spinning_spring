@@ -31,3 +31,22 @@
 .nl {
     margin-top: 100px;
 }
+
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.slider {
+    /*background: red !important;*/
+    /*border: purple !important;*/
+
+}
+
+.rail {
+
+}

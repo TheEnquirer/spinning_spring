@@ -1,5 +1,9 @@
 import React from "react";
 import Sketch from "react-p5";
+import Slider, { Range } from 'rc-slider';
+import 'rc-slider/assets/index.css';
+import '../App.css';
+
 
 //let x = 0
 //let y = 0
@@ -9,9 +13,9 @@ let cnv;
 
 let theta = 0;
 //let w = 0.04;
-let w = 1.4
+let w = 1.0
 
-let size = 850;
+let size = 1000;
 
 
 let path = []
@@ -27,11 +31,6 @@ let k = 2
 let m = 1
 let dt = 0.01
 
-
-
-
-
-console.log(r, th, "wheee")
 
 
 export default (props) => {
@@ -61,19 +60,32 @@ export default (props) => {
     }
 
     const gen = () => {
-	let f = Math.pow(w, 2) - k/m
+	let f = Math.pow(calcW(), 2) - k/m
 	r = prev_r + prev_rp * dt
 	rp = prev_rp + f * prev_r*dt
-	th = prev_th + w*dt
+	th = prev_th + calcW() *dt
 
 	prev_r = r
 	prev_rp = rp
 	prev_th = th
 	//console.log(r, th)
-	return [r*10000, th*4]
+	return [r*18000, th*7]
 
 	//theta += w;
 	//return theta
+    }
+
+    const calcW = () => {
+	//let mod = Math.cos(w)
+	//let mod = Math.sqrt(w)
+	//w -= 0.1
+	//w -= 0.01
+	//let mod = Math.sin(w)
+	//let mod = Math.cos(w)
+	//console.log(mod)
+	//w += 0.1
+	let mod = w
+	return mod
     }
 
     const draw = (p5) => {
@@ -87,7 +99,7 @@ export default (props) => {
 
 	let i;
 	for (i in path) {
-	    p5.fill(`rgba(206, 201, 189, ${3/3})`);
+	    p5.fill(`rgba(206, 201, 189, ${10/i})`);
 	    p5.ellipse(path[i][0], path[i][1], 5, 5);
 	}
 	//console.log(path.length)
@@ -112,7 +124,23 @@ export default (props) => {
 	// in the draw function...
 	// please use normal variables or class properties for these purposes
 	//x++;
-	};
+    };
 
-    return <Sketch setup={setup} draw={draw} keyPressed={keyPressed}/>;
+    return (
+	<div className="wrapper">
+	    <Sketch setup={setup} draw={draw} keyPressed={keyPressed}/>
+	    <div style={{maxWidth: 500, minWidth: 500}}>
+		<Slider min={-100} max={300}
+		    className={"slider"}
+		    railStyle={{
+			//padding: 10, border: "red", background: "red"
+		    }}
+		    trackStyle={[ {background: "#cec9bd"} ]}
+		    defaultValue = {w*100}
+		    onChange={(e) => { w = e / 100}}
+		    marks={{0: {style: "", label: "0"}}}
+		/>
+	    </div>
+	</div>
+    )
 };
