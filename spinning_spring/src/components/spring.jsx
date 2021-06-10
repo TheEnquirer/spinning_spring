@@ -31,7 +31,7 @@ let k = 2
 let m = 1
 let dt = 0.01
 
-
+let sinm = true
 
 export default (props) => {
     const setup = (p5, canvasParentRef) => {
@@ -54,8 +54,23 @@ export default (props) => {
 	    w -= 0.1
 	}
 
-	if (e.key == "r") {
-	    w = 1.4
+	if (e.key == "m") {
+	    if (sinm) {
+		calcW = () => {
+		    let mod = Math.sin(w)
+		    w += 0.1
+		    return mod
+		}
+		sinm = false
+	    }
+	    else {
+		calcW = () => {
+		    let mod = w
+		    return mod
+		}
+		w = 1.0
+		sinm = true
+	    }
 	}
     }
 
@@ -75,7 +90,7 @@ export default (props) => {
 	//return theta
     }
 
-    const calcW = () => {
+    let calcW = () => {
 	//let mod = Math.cos(w)
 	//let mod = Math.sqrt(w)
 	//w -= 0.1
@@ -140,7 +155,10 @@ export default (props) => {
 		    dotStyle={{background: "#BAB7AE", border: "2px solid #9B8E6E"}}
 		    handleStyle={[ {border: "3px solid #897142", background: "#D8D2C6"} ]}
 		    defaultValue = {w*100}
-		    onChange={(e) => { w = e / 100}}
+		    onChange={(e) => { w = e / 100;
+
+		    //console.log(path[0])
+		    }}
 		    marks={{0: {style: "", label: "0"}}}
 		/>
 	    </div>
