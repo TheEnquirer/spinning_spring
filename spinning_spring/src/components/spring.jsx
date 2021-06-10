@@ -134,8 +134,11 @@ export default (props) => {
 		    className={"slider"}
 		    railStyle={{
 			//padding: 10, border: "red", background: "red"
+			background: "#FFF8E9"
 		    }}
 		    trackStyle={[ {background: "#cec9bd"} ]}
+		    dotStyle={{background: "#BAB7AE", border: "2px solid #9B8E6E"}}
+		    handleStyle={[ {border: "3px solid #897142", background: "#D8D2C6"} ]}
 		    defaultValue = {w*100}
 		    onChange={(e) => { w = e / 100}}
 		    marks={{0: {style: "", label: "0"}}}
