@@ -9,3 +9,4 @@ Functionality we need:
   - current location as well as path?
 - change w
   - pass it a function / use keys to modulate speed?
+  - passing function doesn't really work out.. slider + keys intead
